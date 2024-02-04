@@ -1,73 +1,45 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Feedback</title>
     <style type="text/css" media="screen">
-        * {
-            margin: 0px 0px 0px 0px;
-            padding: 0px 0px 0px 0px;
-        }
-
-        body, html {
-            padding: 3px 3px 3px 3px;
-
+        body {
+            padding: 10px; /* Adjust padding for better spacing */
             background-color: #D8DBE2;
-
             font-family: Verdana, sans-serif;
-            font-size: 11pt;
-            text-align: center;
+            font-size: 14px; /* Increased font size for better readability */
+            line-height: 1.6; /* Increased line height for better spacing */
+        }
+        .main_page {
+            text-align: left; /* Align main page content to the left */
+            margin-bottom: 20px; /* Add margin bottom for better separation */
+        }
+        ul {
+            list-style: none; /* Remove default list styles */
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+        li {
+            margin-bottom: 10px; /* Add margin bottom for list items */
+        }
+        code {
+            font-family: Consolas, monospace; /* Use monospace font for code */
+            background-color: #f4f4f4; /* Add background color for code */
+            padding: 2px 5px; /* Add padding for code */
+            border-radius: 3px; /* Add border radius for code */
         }
     </style>
 </head>
 <body>
-    <div class="main_page"><h2>Suggestions/Feedbacks/Bug Report for ViddyMovies</h2></div>
-    <p> Tell us more on how we can improve viddymovies. Do not send sensitive info, if you need to share sensitive info, we will be sharing PGP key soon. The form is ratelimited so no spamming </p>
-	<form id="feedbackForm">
-    <label for="feedback">Feedback:</label>
-    <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br>
-    <input type="button" value="Submit Feedback" onclick="submitForm()">
-</form>
-<script>
-    function submitForm() {
-        const formData = new FormData(document.getElementById('feedbackForm'));
-        const feedback = formData.get('feedback');
-
-        // Construct the URL with the feedback as a GET parameter
-        const url = `http://viddymovies.com:2095/?feedback=${encodeURIComponent(feedback)}`;
-
-        // Use the fetch API to make a GET request
-        fetch(url)
-            .then(response => {
-                if (response.ok) {
-                    // If the response is successful, display "Sent (response message)" in a <p> element
-                    return response.text();
-                } else {
-                    // If there's an error, reject the promise with an error message
-                    throw new Error(`${response.status} - ${response.statusText}`);
-                }
-            })
-            .then(responseText => {
-                // Display "Sent (response message)" in a <p> element
-                const sentElement = document.createElement('p');
-                sentElement.textContent = `Sent (${responseText})`;
-
-                // Append the <p> element to the body
-                document.body.appendChild(sentElement);
-            })
-            .catch(error => {
-                // Handle fetch errors by creating a <p> element with the error message
-                const errorElement = document.createElement('p');
-                errorElement.textContent = `Error: ${error.message}`;
-
-                // Append the <p> element to the body
-                document.body.appendChild(errorElement);
-
-                console.error('Fetch error:', error.message);
-            });
-    }
-</script>
-
+    <div class="main_page">
+        <h2>Suggestions/Feedbacks/Bug Report for ViddyMovies</h2>
+    </div>
+    <p>Tell us more on how we can improve viddymovies</p>
+    <ul>
+        <li>Send us email to <a href="mailto:viddymovies@skiff.com">viddymovies@skiff.com</a></li>
+        <li>Use Python to make a request at <a href="http://viddymovies.com:2095/?feedback=FEEDBACK">http://viddymovies.com:2095/?feedback=FEEDBACK</a> or using curl <code>curl http://viddymovies.com:2095/?feedback=YOURFEEDBACK</code></li>
+    </ul>
 </body>
 </html>
 
