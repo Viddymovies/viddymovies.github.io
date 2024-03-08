@@ -1,2 +1,2 @@
 # viddymovies.github.io
-Viddymovies.com Github Page
+Viddymovies.com Support page (viddymovies.github.io)
